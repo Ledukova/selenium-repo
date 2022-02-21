@@ -21,7 +21,6 @@ def test_example(driver):
     strani_errors=0
     strana_st=" "
     for i in range(0, len(stroki)):
-        stroki=driver.find_elements_by_css_selector("tr.row")
         kolonki=stroki[i].find_elements_by_css_selector("td") # колонки в строке таблицы стран
         strana_t=kolonki[4].get_attribute("textContent").lower() # название текущей страны в нижнем регистре
         if strana_st>strana_t:
@@ -40,6 +39,7 @@ def test_example(driver):
                     print(strana_t, ": зона не по алфавиту:", zone_t)
                 zone_st=zone_t
             driver.find_element_by_css_selector("li#app- a[href$='countries']").click()
+            stroki=driver.find_elements_by_css_selector("tr.row")
         strana_st=strana_t
     if (zone_errors>0) or (strani_errors>0):
         raise Exception(strani_errors, "стран не по алфавиту", zone_errors, "зон не по алфавиту")
