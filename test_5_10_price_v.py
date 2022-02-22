@@ -91,7 +91,7 @@ def test_example(driver):
                     if name_glogal not in tovar:
                         tovar.append(name_glogal)
     if (color_errors>0):
-        raise Exception(color_errors, " несоответствий наименований товара на главной странице и на странице товара")
+        raise Exception(color_errors, " несоответствий начальной цены товара (не зачеркнута либо не серая) на главной странице и на странице товара")
 
 
 

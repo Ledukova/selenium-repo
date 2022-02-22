@@ -69,7 +69,6 @@ def test_example(driver):
                         color_errors=color_errors+1
                         print("Ошибка: цвет акционной цены товара ", name_global, " на главной странице не красный")
                     strike_global=my_list[i].find_element_by_tag_name("strong").value_of_css_property("font-weight") # жирный шрифт цены на главной странице
-                    my_list[i].find_element_by_tag_name("strong").value_of_css_property("font-weight")
                     if int(strike_global)!=700:
                         color_errors=color_errors+1
                         print("Ошибка: цена товара ", name_global, " на главной странице не жирная")
@@ -92,7 +91,7 @@ def test_example(driver):
                     if name_glogal not in tovar:
                         tovar.append(name_glogal)
     if (color_errors>0):
-        raise Exception(color_errors, " несоответствий наименований товара на главной странице и на странице товара")
+        raise Exception(color_errors, " несоответствий акционной цены товара (не красная либо не жирная) на главной странице и на странице товара")
 
 
 
