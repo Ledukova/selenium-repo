@@ -12,7 +12,7 @@ def driver(request):
 def test_example(driver):
     driver.get("http://localhost/litecart/")
     wait = WebDriverWait(driver, 20) # seconds
-    my_list=driver.find_elements_by_css_selector("[class^='product']")
+    my_list=driver.find_elements_by_css_selector(".product")
     hi=0 # кол-во без стикера
     hj=0 # кол-во более одного стикера
     for i in range(0, len(my_list)):
