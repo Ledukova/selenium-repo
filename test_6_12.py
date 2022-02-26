@@ -54,7 +54,6 @@ def test_example(driver):
     driver.find_element_by_css_selector("[name$='_from']").send_keys(Keys.HOME + "01012022")
     driver.find_element_by_css_selector("[name$='_to']").send_keys(Keys.HOME + "01012023")
     driver.find_element_by_css_selector("[href='#tab-information']").click()
-    WebDriverWait(driver, 20)  # seconds
     driver.find_element_by_name('manufacturer_id').send_keys("AСМЕ Corp.")
     information = driver.find_element_by_id('tab-information')
     text = information.find_elements_by_css_selector("[type='text']")
@@ -62,7 +61,6 @@ def test_example(driver):
         text[i].send_keys('test')
     information.find_element_by_css_selector("[dir='ltr']").send_keys('test test test')
     driver.find_element_by_css_selector("[href='#tab-prices']").click()
-    WebDriverWait(driver, 20)  # seconds
     driver.find_element_by_name("purchase_price").send_keys(Keys.HOME + "150")
     driver.find_element_by_css_selector("[name$='_code']").click()
     driver.find_element_by_css_selector("[value='USD']").click()
