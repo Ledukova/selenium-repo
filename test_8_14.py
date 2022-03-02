@@ -20,18 +20,20 @@ def test_example(driver):
     driver.find_element_by_css_selector(".button").click()
     links = driver.find_elements_by_css_selector(".fa-external-link")  # все ссылки на  Add New Country
     # print()
-    window_home = driver.current_window_handle  # индинтификатор страницы Add New Country
+    window_home = driver.current_window_handle  # идентификатор страницы Add New Country
+    window = driver.window_handles  # исходный массив окон из одного окна страницы Add New Country
     # print(window_home)
     for i in range(0, len(links)):
         links[i].click()  # открытие i-ой ссылки
         windows = driver.window_handles  # находим идентификаторы всех открытыех окон
         #print("открытые окна", windows)
-        if len(window_home) == len(windows):  # ждем открытия окна
-            wait.until(lambda d: len(window_home) < len(windows))
+        if len(window) == len(windows):  # ждем открытия окна
+            wait.until(lambda d: len(window) < len(driver.window_handles))
+            windows = driver.window_handles
         for i in range(0, len(windows)):  # определить какое окно открылось
             if window_home != windows[i]:
                 new_window = windows[i]
-                print(new_window)
+                #print(new_window)
         driver.switch_to.window(new_window)  # переходим в новое окно
         driver.close() #закрываем новое окно
         driver.switch_to.window(window_home)  # переходим в окно со страницей Add New Country
